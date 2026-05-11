@@ -1,0 +1,18 @@
+1. Products are stored in a list in the main file. They are loaded from the .json file on program execution. They 
+are read in as a dictionary and converted back into a class object before putting them back in the list.
+
+2. Purchase orders need to have an existing vendor id to be created. When new items are added to the purchase order, 
+they are checked to make sure the items actually exist. If not, the program stops and you have to make a new product
+for the items you want to purchase.
+
+3. When a shipment is received, the program will update inventory accordingly. It will go through the list of items
+in the purchase order and update each product's quantity in stock. It will add the reorder quantity to the quantity
+in stock for each item in the purchase order.
+
+4. When the user exits the program, it will turn each product, vendor, and purchase order object into a dictionary
+and put them in a list. It writes the list to a .json file to be saved. When the program starts, it will read the 
+list from the .json file and convert all the dictionaries back into class objects.
+
+5. One bug I fixed was with the JSON. It was not working with the purchase orders because I used a datetime object
+for the date created attribute. I had to convert the datetime object into an iso formatted string for it to be saved
+by the json. Then, when the data is loaded, I had to make sure to convert the iso string back into a datetime object.
